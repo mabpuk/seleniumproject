@@ -29,6 +29,12 @@ public abstract class PageComponent implements IPageComponent {
                 .ignoring(StaleElementReferenceException.class, NoSuchElementException.class);
     }
 
+    protected boolean waitForPageElementPresent(By by, String failureMessage){
+        return getWait()
+                .withMessage(failureMessage)
+                .until(driver -> isElementPresent(by));
+    }
+
     //click element by
     protected void click(By by){
         getWait().until(elementToBeClickable(by)).click();
@@ -45,6 +51,15 @@ public abstract class PageComponent implements IPageComponent {
 
     protected WebElement getElement (By by){
         return getWait().until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
+    public boolean isElementPresent (By by){
+        try{
+            driver.findElement(by);
+            return true;
+        }catch (NoSuchElementException e){
+            return false;
+        }
     }
 
 }

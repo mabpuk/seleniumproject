@@ -14,7 +14,7 @@ public abstract class TestBase {
     @Before
     public void setUp() {
         this.driver = getDriver();
-        this.driver.manage().window().maximize();
+        //this.driver.manage().window().maximize();
     }
 
     private WebDriver getDriver() {

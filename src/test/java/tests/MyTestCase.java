@@ -1,13 +1,21 @@
 package tests;
 
-import core.framework.TestBase;
+import components.sportsdirect.SportsDirectPage;
+import components.sportsdirect.popup.AdvertPopUp;
 import org.junit.Test;
+import tests.sportsdirect.SportsDirectTestBase;
 
 
-public class MyTestCase extends TestBase {
+public class MyTestCase extends SportsDirectTestBase{
 
     @Test
-    public void test_SS_LV() {
-        driver.get("http://www.google.com");
+    public void testSportsDirectSorting() {
+        SportsDirectPage sportsDirectPage = goToSportsDirectPage();
+        AdvertPopUp advertPopUp = new AdvertPopUp(driver);
+        advertPopUp.clickClose();
+
+        System.out.println("POPUP");
+        sportsDirectPage.closeAdvertPopUp();
+        System.out.println("PASS");
     }
 }
