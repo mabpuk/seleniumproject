@@ -8,14 +8,24 @@ import tests.sportsdirect.SportsDirectTestBase;
 
 public class MyTestCase extends SportsDirectTestBase{
 
+
+    /**
+     * 1. Open sportsdirect.com page
+     * 2. Open Mens shoes section
+     * 3. Select brands "Skechers" and "Firetrap"
+     * 4. Set price range "30-60" EUR
+     * 5. Check items are correctly filtered
+     */
     @Test
     public void testSportsDirectSorting() {
         SportsDirectPage sportsDirectPage = goToSportsDirectPage();
         AdvertPopUp advertPopUp = new AdvertPopUp(driver);
         advertPopUp.clickClose();
+        sportsDirectPage.openMensSection();
 
-        System.out.println("POPUP");
-        sportsDirectPage.closeAdvertPopUp();
-        System.out.println("PASS");
+        sportsDirectPage.expandFootwear();
+        sportsDirectPage.selectShoes();
+
+
     }
 }
